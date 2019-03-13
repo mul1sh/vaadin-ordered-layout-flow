@@ -1,9 +1,10 @@
 package com.vaadin.flow.component.orderedlayout.tests;
 
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
@@ -35,12 +36,27 @@ public class LayoutDefaultsTest {
         // throw. Test is on purpose, so that the implementation not
         // accidentally removed.
         HorizontalLayout horizontalLayout = new HorizontalLayout();
-        horizontalLayout.addClickListener(event -> {});
+        horizontalLayout.addClickListener(event -> {
+        });
 
         FlexLayout flexLayout = new FlexLayout();
-        flexLayout.addClickListener(event -> {});
+        flexLayout.addClickListener(event -> {
+        });
 
         VerticalLayout verticalLayout = new VerticalLayout();
-        verticalLayout.addClickListener(event -> {});
+        verticalLayout.addClickListener(event -> {
+        });
+    }
+
+    @Test
+    public void defaultAlignmentValues() {
+        VerticalLayout verticalLayout = new VerticalLayout();
+        Assert.assertEquals(Alignment.STRETCH,
+                verticalLayout.getDefaultHorizontalComponentAlignment());
+
+        HorizontalLayout horizontalLayout = new HorizontalLayout();
+        Assert.assertEquals(Alignment.STRETCH,
+                horizontalLayout.getDefaultVerticalComponentAlignment());
+
     }
 }
